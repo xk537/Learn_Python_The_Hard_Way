@@ -1,29 +1,21 @@
-# coding:utf-8
-from sys import argv
+#coding:utf-8
 
-script, filename = argv
+from sys import argv # 试用python自己的sys模块向程序里面传递参数
 
-print "We're going to erase %r." % filename
-print "If you don't want that, hit CRTL-C(^C)."
-print "If you do want that,hit RETURN."
+script, filename = argv # 将传递进程序的参数赋值给变量 script 和 filename
 
-raw_input("?")
+txt = open (filename) # 打开文件，并将打开的文件赋值给变量 txt
 
-print "Opening the file…"
-target = open(filename,'w')
+print "Here's your file %r :" % filename # 打印  Here's your file  :   其中%r是字符格式
+print txt.read() #读取打开的文件
+print "Type the filename again:"  # 打印Type the filename again:
+file_again = raw_input(">")  # 引入向程序输入内容的提示符号 > ，并将输入的内容赋值给变量 file_name
 
-print "Truncating the file. Goodbye!"
-target.truncate()
+txt_again = open(file_again) # 打开上一步输入名称对应的文件，并将结果赋值给变量 txt_again
 
-print "Now i'm going to ask you for three lines."
+print txt_again.read() # 读取上一步打开的文件内容
 
-line1 = raw_input("line1:")
-line2 = raw_input("line2:")
-line3 = raw_input("line3:")
+txt.close()
 
-print "I'm going to write these to the file."
-
-target.write("%s\n,%s\n,%s" %(line1,line2,line3))
-
-print "And finally, we close it."
-target.close()
+# 用命令行打开文件
+# print open('ex15_sample.txt').read()

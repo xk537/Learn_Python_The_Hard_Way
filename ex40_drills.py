@@ -1,9 +1,12 @@
-#coding:utf-8
+# coding:utf-8
 
 cities = {'CA':'San Francisco', 'MI':'Detroit','FL':'Jacksonville'}
 
 cities['NY'] = 'New York'
 cities['OR'] = 'Portland'
+
+# print cities.items()
+# >>> [('FL', 'Jacksonville'), ('CA', 'San Francisco'), ('MI', 'Detroit'), ('OR', 'Portland'), ('NY', 'New York')]
 
 def find_city(themap,state):
     if state in themap:
@@ -11,13 +14,13 @@ def find_city(themap,state):
     else:
         return "Not Found."
 
-#cities['_find'] = find_city
+cities['_find'] = find_city
 
-while True:
+for state in cities.items():
     print "State? (Enter to quit)",
     state = raw_input(">")
 
     if not state: break
 
-    city_found = find_city(cities,state)
+    city_found = cities['_find'](cities,state)
     print city_found
